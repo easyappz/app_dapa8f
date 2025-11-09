@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User
 
 
+@admin.register(User)
 class UserAdmin(BaseUserAdmin):
     list_display = ['email', 'first_name', 'last_name', 'is_staff', 'is_active', 'date_joined']
     list_filter = ['is_staff', 'is_active', 'date_joined']
@@ -24,6 +25,3 @@ class UserAdmin(BaseUserAdmin):
     )
     
     readonly_fields = ['date_joined', 'last_login']
-
-
-admin.site.register(User, UserAdmin)
